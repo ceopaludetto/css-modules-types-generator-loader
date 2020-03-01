@@ -6,6 +6,10 @@
   "keywords": [],
   "author": "Carlos Eduardo <https://www.github.com/SorEduard>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ceopaludetto/css-modules-types-generator-loader"
+  },
   "devDependencies": {
     "eslint": "^6.0.1",
     "eslint-config-standard": "^12.0.0",
