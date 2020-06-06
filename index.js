@@ -10,7 +10,7 @@ function getConfig(loader) {
 
   return {
     suffix: () => "Styles",
-    ...config
+    ...config,
   };
 }
 
@@ -31,11 +31,13 @@ function validateName(s) {
 }
 
 module.exports = function loader(webpackSource) {
-  this.cacheable();
+  if (this.cacheable) {
+    this.cacheable();
+  }
 
   const callback = this.async();
 
-  const end = err => {
+  const end = (err) => {
     if (err) {
       callback(err);
     } else {
@@ -50,11 +52,14 @@ module.exports = function loader(webpackSource) {
 
     const locals = [];
 
-    match[1].split("\n").map(s => {
-      const keyMatch = s.match(/"(.*?)": /);
+    match[1].split("\n").map((s) => {
+      const keyMatch = s.match(/"(.*?)"/g);
 
       if (keyMatch) {
-        locals.push(keyMatch[1]);
+        locals.push({
+          key: keyMatch[0].replace(/"/g, ""),
+          value: keyMatch[1].replace(/"/g, ""),
+        });
       }
     });
 
