@@ -1,6 +1,6 @@
 {
   "name": "css-modules-types-generator-loader",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate .d.ts files to your css modules",
   "main": "index.js",
   "keywords": [],
