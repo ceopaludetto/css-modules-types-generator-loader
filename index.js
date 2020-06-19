@@ -64,6 +64,7 @@ module.exports = function loader(webpackSource) {
     });
 
     if (locals.length) {
+      const index = config.index;
       const suffix = config.suffix(this.resource);
       const name = `${validateName(
         capitalizeFirstLetter(
@@ -71,7 +72,7 @@ module.exports = function loader(webpackSource) {
         )
       )}${suffix}`;
 
-      const output = template(name, locals);
+      const output = template(name, locals, index);
       const filename = `${this.resource}.d.ts`;
 
       readFile(filename, (err, data) => {
